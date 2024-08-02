@@ -4,15 +4,13 @@ function NewTodoForm({ addTodo }) {
   const [description, setDescription] = useState("");
   const [assigned, setAssigned] = useState("");
 
-  //   const descriptionChange = (event) => {
-  //     setDescription(event.target.value);
-  //     console.log("description", event.target.value);
-  //   };
-
-  //   const assignChange = (event) => {
-  //     setAssigned(event.target.value);
-  //     console.log("assigned", event.target.value);
-  //   };
+  const submitTodo = () => {
+    if (description !== "" && assigned !== "") {
+      addTodo(description, assigned);
+      setDescription("");
+      setAssigned("");
+    }
+  };
 
   return (
     <div className="mt-5">
@@ -37,7 +35,11 @@ function NewTodoForm({ addTodo }) {
             value={description}
           ></textarea>
         </div>
-        <button type="button" className="btn btn-primary mt-3">
+        <button
+          type="button"
+          className="btn btn-primary mt-3"
+          onClick={submitTodo}
+        >
           Add Todo
         </button>
       </form>
